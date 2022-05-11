@@ -55,11 +55,30 @@ Group 5: Sequences:   3      Score:11457
 Group 6: Sequences:   7      Score:10593
 Alignment Score 83505
 
-NEXUS-Alignment file created    [fraserav5_aligned_cl.nex]'''
+NEXUS-Alignment file created    [fraserav5_aligned_cl.nex]
+```
+I also used Muscle to do alignment:
+```
+$ ./muscle5.1.win64.exe -align sequence_final.fasta -output fraserav6_ms.fasta
 
+muscle 5.1.win64 [ddb630]  16.9Gb RAM, 8 cores
+Built Jan 13 2022 15:30:12
+(C) Copyright 2004-2021 Robert C. Edgar.
+https://drive5.com
+
+Input: 7 seqs, avg length 724, max 818
+
+00:00 4.9Mb  CPU has 8 cores, running 8 threads
+00:00 82Mb    100.0% Calc posteriors
+00:00 13Mb    100.0% Consistency (1/2)
+00:00 8.1Mb   100.0% Consistency (2/2)
+00:00 5.8Mb   100.0% UPGMA5
+00:01 6.8Mb   100.0% Refining
+```
 2, IQtree
 
-''' bin/iqtree -s fraserav5_aligned_cl.fasta -bb 1000 -redo
+```
+bin/iqtree -s fraserav5_aligned_cl.fasta -bb 1000 -redo
 IQ-TREE multicore version 1.6.12 for Windows 64-bit built Aug 15 2019
 Developed by Bui Quang Minh, Nguyen Lam Tung, Olga Chernomor,
 Heiko Schmidt, Dominik Schrempf, Michael Woodhams.
@@ -364,8 +383,10 @@ Prior: I set Yule Mode, birthRateY.t:tree, for the first try I set the Alpha (sh
 MCMC: I set chain length 100,000, tracelog every 200, leave all others default. 
 I saved the file as fraserav3_gamma.xml
 
+I also used muscle alignment input. I set everything as default except I set site model as GTR + all the rates to 1 without estimate, MCMC chain length to 10,000
 b. BEAST: 
 I set seeds as 777
+For ms, seed: 10000
 output:
 ```
 Random number seed: 777
@@ -662,6 +683,7 @@ Total calculation time: 5.999 seconds
 ```
 c. tracer:
 seed 777 shows the higher ESS
+All others are shitty trees
 
 d. Fig tree, reroot the tree with Swertia. 
 
